@@ -1,0 +1,34 @@
+class Solution {
+    public boolean isPalindrome(String s) {
+        // Two Pointers Solution
+        // Pattern: converging pointers
+
+        if(s.length() <= 1) {
+            return true;
+        }
+
+        var left = 0;
+        var right = s.length() - 1;
+
+        while (left < right) {
+
+            while (left < right && !Character.isLetterOrDigit(s.charAt(left))){
+                left++;
+            }
+
+            while (left < right && !Character.isLetterOrDigit(s.charAt(right))){
+                right--;
+            }
+
+            if (Character.toLowerCase(s.charAt(left)) == Character.toLowerCase(s.charAt(right))){
+                left++;
+                right--;
+                continue;
+            }
+
+            return false;
+        }
+
+        return true;
+    }
+}
